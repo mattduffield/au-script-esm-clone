@@ -1,0 +1,44 @@
+<template>
+  <require from="./home.css"></require>
+  <!-- <require from="../contacts/contacts.js"></require>
+  <require from="../../resources/elements/list-box/list-box.js"></require> -->
+
+  <section class="home">
+    <h3>Welcome to the Home View!</h3>
+    
+    <button class="btn btn-primary"
+      click.delegate="showDialog()">
+      Show Dialog
+    </button>
+    <button class="btn btn-primary"
+      click.delegate="buildMap()">
+      Build Map
+    </button>
+    <a href="#dynamic">Dynamic</a>
+    <a href="#contacts">Contacts</a>
+    <a href="#example">Example</a>
+    <a href="#editor">Editor</a>
+    <a href="#diff-editor">DiffEditor</a>
+    <a href="#invoices">Invoices</a>
+    <br>
+    <multi-select></multi-select>
+    <contacts></contacts>
+    <list-box 
+      options.bind="members" 
+      initial-members.bind="initialMembers"
+      selected-values.bind="selectedMembers"
+      display-member="display"
+      value-member="o">
+    </list-box>
+
+    <select value.two-way="color">
+      <option value="yellow">Yellow</option>
+      <option value="green">Green</option>
+    <select>
+    <div style="--primary-color: ${color}">
+      <div style="background-color: var(--primary-color)">
+        The background is in the --primary-color: \${color}.
+      </div>
+    </div>
+  </section>
+</template>

@@ -1,0 +1,12 @@
+<template>
+  <select 
+    class="full-width"
+    multiple
+    size="15"
+    value.bind="selectedValues"
+    set-focus>
+    <option repeat.for="o of options" model.bind="o">
+      ${o[displayMember]}
+    </option>
+  </select>
+</template>

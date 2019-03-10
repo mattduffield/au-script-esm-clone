@@ -1,0 +1,40 @@
+<template>
+  <section>
+    <style>
+      .flex-column-1 {
+        display: flex;
+        flex-flow: column;
+        flex: 1;
+      }
+      .iframe-component {
+        border: none;
+        position: absolute;
+        top: 100px;
+        /* top: 0; */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: calc(100% - 100px);
+        /* height: 100%; */
+        width: 100%;
+      }
+    </style>
+    <h3>
+      <a class="nav-back" href="#home"><i class="fas fa-arrow-alt-circle-left"></i></a>
+      Welcome to the Editor View!
+    </h3>
+    <label>Language</label>
+    <select class="language-picker" value.bind="selectedLanguage" change.delegate="languageChanged(selectedLanguage)">
+      <option model.bind="null">Choose...</option>
+      <option repeat.for="m of modes"
+        model.bind="m">
+        ${m.modeId}
+      </option>
+    </select>
+    <iframe class="iframe-component"
+      frameborder="0"
+      scrolling="no"
+      src="${monacoSrc}">
+    </iframe>
+  </section>
+</template>

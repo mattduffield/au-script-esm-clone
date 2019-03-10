@@ -1,0 +1,204 @@
+:root {
+  --bg: #fff;
+  --bg2: #fafafa;
+  --bg3: #fcfcfc;
+  --bg4: #f8f8f8;
+  --footer-bg: rgba(114,186,94,.15);
+  --code: #dc3958;
+  --code-text: #6C7757;
+  --code-comment: #9AA880;
+  --text-color: #555;
+  --pale-text: #999;
+  --info-box-text: #84613d;
+  --gs0: #eee;
+  --gs1: #CCC;
+  --gs2: #AAA;
+  --green1: #008f68;
+  --green2: #6DB65B;
+  --green3: #4AAE9B;
+  --yellow1: #EFBB35;
+  --yellow2: #dfa612;
+  --yellow3: #FAE042;
+  --subtle: rgba(0, 0, 0, .1);
+  --very-subtle: rgba(0, 0, 0, .05);
+  --top1: rgba(107, 183, 86, .95);
+  --top2: rgba(0, 143, 104, .95);
+  --subtle-green1: rgba(114, 186, 94, 0.55);
+  --subtle-green2: rgba(114, 186, 94, 0.05);
+  --subtle-yellow1: rgba(239, 187, 53, 0.6);
+  --subtle-yellow2: rgba(236, 198, 48, .1);
+  --subtle-yellow3: rgba(236, 198, 48, .3);
+  --fb: #3b5998;
+  --reddit: #FC471E;
+  --h-news: #F60;
+  --twitter: #00aced;
+  --cat-head: rgba(114, 186, 94, 0.1);
+  --front-text-color: #93a791;
+  --info-box-bg: rgba(255, 213, 70, 0.1);
+}
+.dark {
+  --bg: #222831;
+  --bg2: #181C22;
+  --bg3: #1A1D24;
+  --bg4: black;
+  --footer-bg: rgba(0, 0, 0, .3);
+  --code: #F59BAC;
+  --code-text: #FAD7A0;
+  --code-text: #FEE6C0;
+  --code-comment: #81899B;
+  --text-color: #F9FFEE;
+  --pale-text: #dfa612;
+  --info-box-text: antiquewhite;
+  --gs0: rgba(239, 187, 53, 0.6);
+  --gs1: rgba(239, 187, 53, 0.6);
+  --green1: #EFBB35;
+  --green2: #E84279;
+  --green3: #dfa612;
+  --top1: #302E24;
+  --top2: #28313E;
+  --subtle-green1: rgba(236, 198, 48, .1);
+  --subtle-green2: #1A1D24;
+  --subtle-yellow3: rgba(236, 198, 48, .1);
+  --fb: #fff;
+  --reddit: #fff;
+  --h-news: #fff;
+  --twitter: #fff;
+  --cat-head: #1A1D24;
+  --front-text-color: antiquewhite;
+  --info-box-bg: #1A1D24;
+}
+html,body {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(240, 240, 240);
+}
+.modal-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
+}
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  /* float: right; */
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+.close-button:hover {
+  background-color: darkgray;
+}
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.splash {
+  position: fixed;
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(169, 169, 169, .75);;
+}
+.splash .message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 72px;
+  line-height: 72px;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
+  text-transform: uppercase;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+.splash .spinner {
+  text-align: center;
+}
+.display-block {
+  display: block;
+}
+router-view > section {
+  padding: 20px;
+}
+.btn {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.btn-primary {
+  color: white;
+  background-color: cornflowerblue;
+}
+.nav-back {
+  margin-right: 10px;
+}
+/* Dialog */
+dialog {
+  background-color: var(--bg);
+  color: var(--text-color);
+  text-align: center;
+  border: none;
+  /* padding: 2rem; */
+  padding: 0;
+  border-radius: 6px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.1), 0 0 10px rgba(0,0,0,0.25);
+  max-width: 90vw;
+}
+dialog[open] {
+  animation: appear .15s cubic-bezier(0, 1.8, 1, 1.8);
+}
+dialog::backdrop {
+  background: linear-gradient(45deg, rgba(0,143,104,.5), rgba(250,224,66,.5));
+}
+dialog + .backdrop {
+  background: linear-gradient(45deg, rgba(0,143,104,.5), rgba(250,224,66,.5));
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+dialog .dialog-host {
+  padding: 2rem;
+}
+dialog .actions {
+  display: flex;
+  justify-content: space-around;
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateX(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

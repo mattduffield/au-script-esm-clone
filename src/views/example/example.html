@@ -1,0 +1,66 @@
+<template>
+  <section class="example">
+    <style>
+    </style>
+    <h3>
+      <a class="nav-back" href="#home">
+        <i class="fas fa-arrow-alt-circle-left"></i>
+      </a>Welcome to the Example View!
+    </h3>
+    <form>
+      <!-- <label>
+        Birth Date:
+        <input input-mask="context.bind: $this; prop: birth_date; type: date;"
+          type="tel" 
+          placeholder="MM/DD/YYYY">
+      </label>
+      <br/> -->
+      <!-- <label>
+        Birth Date:
+        <input id="dobInput" change.delegate="onChange($event)"
+          type="tel" 
+          placeholder="MM/DD/YYYY">
+      </label>
+      <input value.bind="dob"
+        type="tel"
+        style="visibility: hidden;"
+        placeholder="MM/DD/YYYY"> -->
+      <label>
+        Birth Date:
+        <input
+          type="tel"
+          value.bind="birth_date | date & updateTrigger: 'blur'"
+          date-mask
+          placeholder="MM/DD/YYYY">
+      </label>
+      <br/>
+      <label>
+        Start Date:
+        <input id="start_date" class="date-mask"
+          value.bind="start_date & updateTrigger: 'blur'"
+          >
+      </label>
+      <br/>
+      <label>
+        SSN:
+        <input id="ssn" class="ssn-mask"
+          value.bind="ssn & updateTrigger: 'blur'"
+          >
+      </label>
+      <br/>
+      <label>
+        Phone:
+        <input id="phone" class="phone-mask"
+          value.bind="phone & updateTrigger: 'blur'"
+          >
+      </label>
+    </form>
+    <pre>
+      <!-- dob: ${dob} -->
+      birth_date: ${birth_date}
+      start_date: ${start_date}
+      ssn: ${ssn}
+      phone: ${phone}
+    </pre>
+  </section>
+</template>

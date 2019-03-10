@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Monaco Editor</title>
+    <style>
+      html {
+        margin: 0;
+        height: 100%;
+      }
+      body { 
+        position: absolute;
+        top:0; bottom:0;
+        left:0; right:0;
+        margin: 0;
+      }
+      .flex-column-1 {
+        display: flex;
+        flex-flow: column;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body class="flex-column-1">
+    <div id="container" class="flex-column-1"></div>
+    <script type="text/javascript" src="https://unpkg.com/monaco-editor@0.15.6/min/vs/loader.js"></script>
+    <script>
+      require.config({paths: {'vs': 'https://unpkg.com/monaco-editor@0.15.6/min/vs'}});
+
+      function postMessageSetup() {
+        window.addEventListener('message', receiveMessage, false);
+      }
+
+      function receiveMessage(event) {
+        console.log('messaged received: ', event);
+
+        const messages = JSON.parse(event.data);
+        if (messages.length === 0) return;
+
+        let project = '';
+        for (const msg of messages) {
+          const {operation} = msg;
+          // console.debug('repo', repo, 'location.href', location.href);
+          switch (operation) {
+            case 'editor-layout':
+              if (parent.monacoEditor) {
+                parent.monacoEditor.layout();
+              }
+              break;
+          }
+        }
+      }
+      postMessageSetup();
+
+      // Before loading vs/editor/editor.main, define a global MonacoEnvironment that overwrites
+      // the default worker url location (used when creating WebWorkers). The problem here is that
+      // HTML5 does not allow cross-domain web workers, so we need to proxy the instantiation of
+      // a web worker through a same-domain script
+      window.MonacoEnvironment = {
+        getWorkerUrl: function(workerId, label) {
+          return 'monaco-editor-worker-loader-proxy.js';
+        }
+      };
+      require(['vs/editor/editor.main'], () => {
+        parent.monaco = monaco;
+        parent.monacoEditor = monaco.editor.createDiffEditor(document.getElementById('container'));
+        // parent.monacoEditor.getModel().updateOptions({tabSize: 2});
+        parent.postMessage('diff-editor-ready', window.location.origin);
+      });
+    </script>
+  </body>
+</html>

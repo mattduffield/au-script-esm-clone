@@ -1,0 +1,34 @@
+<template>
+  <section class="dynamic">
+    <h3>
+      <a class="nav-back" href="#home">
+        <i class="fas fa-arrow-alt-circle-left"></i>
+      </a>
+      Welcome to the Dynamic View!
+    </h3>
+    <multi-select></multi-select>
+    <br />
+    <!-- <details>
+      <summary>Confirm Dialog</summary>
+    </details>
+    <br /> -->
+    <button click.delegate="showDialog()">Show Dialog</button>
+    <br/>
+    <button click.delegate="showModalDialog()">Show Modal Dialog</button>
+    <!-- <dialog id="dlgView">
+      <p>Are you sure you want to delete?</p>
+      <button click.delegate="showSubDialog()">Show Dialog</button>
+    </dialog>
+    <dialog id="dlgSubView">
+      <p>Can you see this?</p>
+    </dialog> -->
+    <!-- <dialog-box is-visible.bind="isVisible">
+      <h3>Well, hello there cowboy! 👋</h3>
+      <p>I'm a fancy modal.</p>
+      <div class="actions">
+        <button class="small ok-modal-btn">Ok!</button>
+        <button class="small close-modal-btn">Close</button>
+      </div>
+    </dialog-box> -->
+  </section>
+</template>
