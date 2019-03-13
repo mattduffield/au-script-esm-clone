@@ -23,3 +23,6 @@ At least make sure you are serializing correctly
 
 ## Chapter 2
 It can only get better....
+
+## Chapter 3
+It is getting better...
